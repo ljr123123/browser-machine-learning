@@ -1,5 +1,19 @@
 <script setup lang="ts">
+import { onMounted } from 'vue';
 import navigator from './components/navigator.vue';
+import { getPipelineLayout, setCustomPipelineLayout } from '../GPUCompute/pipeline/pipeline';
+
+onMounted(async () => {
+    setCustomPipelineLayout({
+        label:"test",
+        staticInfoEntries:[],
+        storageInfoEntries:[],
+        main:"",
+        otherFunctionEntries:[]
+    });
+    const layout = await getPipelineLayout("ad");
+    console.log(layout);
+})
 </script>
 <template>
     <navigator/>
